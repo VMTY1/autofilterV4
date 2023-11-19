@@ -6,7 +6,7 @@ class script(object):
 
 ɪᴛ ɪs ᴇᴀsʏ ᴛᴏ ᴜsᴇ ᴍᴇ, ᴊᴜsᴛ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴍᴀᴋᴇ ᴍᴇ ᴀs ᴀᴅᴍɪɴ
 
-🌿ᴍᴀɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://t.me/maharaja_91'>ʀᴀᴊᴀ ᠰ TɢX</a></b>"""
+🌿ᴍᴀɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://t.me/maharaja1'>ʀᴀᴊᴀ ᠰ TɢX</a></b>"""
 
     
     STARTER_TXT = """
