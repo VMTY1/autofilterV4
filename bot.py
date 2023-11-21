@@ -7,7 +7,8 @@ logging.getLogger().setLevel(logging.INFO)
 logging.getLogger("pyrogram").setLevel(logging.ERROR)
 logging.getLogger("imdbpy").setLevel(logging.ERROR)
 
-from pyrogram import Client, __version__
+
+from pyrogram import Client, __version__, filters
 from pyrogram.raw.all import layer
 from database.ia_filterdb import Media
 from database.users_chats_db import db
@@ -47,7 +48,6 @@ class Bot(Client):
         self.username = '@' + me.username
         logging.info(f"{me.first_name} with for Pyrogram v{__version__} (Layer {layer}) started on {me.username}.")
         logging.info(LOG_STR)
-        logging.info(script.LOGO)
         tz = pytz.timezone('Asia/Kolkata')
         today = date.today()
         now = datetime.now(tz)
@@ -61,7 +61,7 @@ class Bot(Client):
     async def stop(self, *args):
         await super().stop()
         logging.info("Bot stopped. Bye.")
-
+    
     async def iter_messages(
         self,
         chat_id: Union[int, str],
@@ -91,6 +91,23 @@ class Bot(Client):
                 for message in app.iter_messages("pyrogram", 1, 15000):
                     print(message.text)
         """
+        current = offset
+        while True:
+            new_diff = min(200, limit - current)
+            if new_diff <= 0:
+                return
+            messages = await self.get_messages(chat_id, list(range(current, current+new_diff+1)))
+            for message in messages:
+                yield message
+                current += 1
+
+
+    async def stop(self, *args):
+        await super().stop()
+        me = await self.get_me()
+        logging.info(f"{me.first_name} is_...  ♻️Restarting...")
+
+    async def iter_messages(self, chat_id: Union[int, str], limit: int, offset: int = 0) -> Optional[AsyncGenerator["types.Message", None]]:                       
         current = offset
         while True:
             new_diff = min(200, limit - current)
