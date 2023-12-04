@@ -4,7 +4,7 @@
 import time
 from pyrogram import Client, filters
 from pyrogram.types import *
-from database.progress import progress_for_pyrogram
+from database.progress
 
 
 DOWNLOAD_START = "<b>Downloading To My server !! Pls Wait</b>"
